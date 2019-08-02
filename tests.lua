@@ -89,12 +89,46 @@ end
 
 function getGenX()
 	local var
-	local v = vector2(0, 0)
+	local v = vector2(1, 1)
 	local a, m = v.angle, v.magnitude
 	local t = chronos.nanotime()
 	for i = 1, 1000000 do
 		v.__x = false
 		var = v.x
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function getGenY()
+	local var
+	local v = vector2(1, 1)
+	local a, m = v.angle, v.magnitude
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		v.__y = false
+		var = v.y
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function getGenAngle()
+	local var
+	local v = vector2(1, 1)
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		v.__angle = false
+		var = v.angle
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function getGenMagnitude()
+	local var
+	local v = vector2(1, 1)
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		v.__magnitude = false
+		var = v.magnitude
 	end
 	return (chronos.nanotime() - t) * 1000
 end
@@ -108,3 +142,6 @@ measure('vector2(), vector parameter', vectorParam)
 measure('vector2(), calling vector itself', vectorCall)
 measure('vector2(), getting, no gen', getNoGen)
 measure('vector2(), getting, generating x', getGenX)
+measure('vector2(), getting, generating y', getGenY)
+measure('vector2(), getting, generating angle', getGenAngle)
+measure('vector2(), getting, generating magnitude', getGenMagnitude)
