@@ -33,7 +33,7 @@ function namedParam()
 	local v = {x = 0, y = 0}
 	local t = chronos.nanotime()
 	for i = 1, 1000000 do
-		var = vector2(t)
+		var = vector2(v)
 	end
 	return (chronos.nanotime() - t) * 1000
 end
@@ -43,12 +43,23 @@ function arrayParam()
 	local v = {0, 0}
 	local t = chronos.nanotime()
 	for i = 1, 1000000 do
-		var = vector2(t)
+		var = vector2(v)
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function vectorParam()
+	local var
+	local v = vector2(0, 0)
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2(v)
 	end
 	return (chronos.nanotime() - t) * 1000
 end
 
 measure('vector2(), no parameters', noParams)
 measure('vector2(), number parameters', numParams)
-measure('vector2(), named table parameters', namedParam)
-measure('vector2(), array table parameters', arrayParam)
+measure('vector2(), named table parameter', namedParam)
+measure('vector2(), array table parameter', arrayParam)
+measure('vector2(), vector parameter', vectorParam)
