@@ -1,30 +1,54 @@
 local chronos = require'chronos'
 local vector2 = require'./Vector.lua'
 
-local var
-local t = chronos.nanotime()
-for i = 1, 10000000 do
-	var = vector2()
+function measure(name, f)
+	local total = 0
+	for i = 1, 1000 do
+		total = total + f()
+	end
+	total = total / 1000
+	print(string.format('%s: %fms', name, total))
 end
-t = (chronos.nanotime() - t) * 1000
 
-print(string.format('vector2(), no parameters, %f', t))
-
-local var
-t = chronos.nanotime()
-for i = 1, 10000000 do
-	var = vector2(0, 0)
+function noParams()
+	local var
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2()
+	end
+	return (chronos.nanotime() - t) * 1000
 end
-t = (chronos.nanotime() - t) * 1000
 
-print(string.format('vector2(), number parameters, %f', t))
-
-local var
-local v = {0, 0}
-t = chronos.nanotime()
-for i = 1, 10000000 do
-	var = vector2(v)
+function numParams()
+	local var
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2(0, 0)
+	end
+	return (chronos.nanotime() - t) * 1000
 end
-t = (chronos.nanotime() - t) * 1000
 
-print(string.format('vector2(), array table parameter, %f', t))
+function namedParam()
+	local var
+	local v = {x = 0, y = 0}
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2(t)
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function arrayParam()
+	local var
+	local v = {0, 0}
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2(t)
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+measure('vector2(), no parameters', noParams)
+measure('vector2(), number parameters', numParams)
+measure('vector2(), named table parameters', namedParam)
+measure('vector2(), array table parameters', arrayParam)
