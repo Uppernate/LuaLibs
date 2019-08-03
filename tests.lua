@@ -151,6 +151,16 @@ function vectorWithTable()
 	return (chronos.nanotime() - t) * 1000
 end
 
+function empty()
+	local var
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+measure('nothing, just a loop', empty)
 measure('vector2.new(), no params', new)
 measure('vector2(), no parameters', noParams)
 measure('vector2(), number parameters', numParams)
