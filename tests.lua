@@ -19,6 +19,16 @@ function new()
 	return (chronos.nanotime() - t) * 1000
 end
 
+function newlocal()
+	local var
+	local v = vector2
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = v.new()
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
 function noParams()
 	local var
 	local t = chronos.nanotime()
@@ -161,7 +171,8 @@ function empty()
 end
 
 measure('nothing, just a loop', empty)
-measure('vector2.new(), no params', new)
+measure('vector2.new(), no params', newlocal)
+measure('vector2.new(), no params, local var', new)
 measure('vector2(), no parameters', noParams)
 measure('vector2(), number parameters', numParams)
 measure('vector2(), named table parameter', namedParam)
