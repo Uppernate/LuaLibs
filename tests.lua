@@ -133,6 +133,24 @@ function getGenMagnitude()
 	return (chronos.nanotime() - t) * 1000
 end
 
+function justATable()
+	local var
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = {x = 0, y = 0}
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
+function vectorWithTable()
+	local var
+	local t = chronos.nanotime()
+	for i = 1, 1000000 do
+		var = vector2{x = 1, y = 1}
+	end
+	return (chronos.nanotime() - t) * 1000
+end
+
 measure('vector2.new(), no params', new)
 measure('vector2(), no parameters', noParams)
 measure('vector2(), number parameters', numParams)
@@ -144,4 +162,5 @@ measure('vector2(), getting, no gen', getNoGen)
 measure('vector2(), getting, generating x', getGenX)
 measure('vector2(), getting, generating y', getGenY)
 measure('vector2(), getting, generating angle', getGenAngle)
-measure('vector2(), getting, generating magnitude', getGenMagnitude)
+measure('just vector table creation', justATable)
+measure('vector2(), with table constructor as parameter', vectorWithTable)
