@@ -16,13 +16,13 @@ local format = string.format
 -- Constructor
 
 function vector2.new(a, b)
-	if type(a) == 'table' then
+	if type(a) == 'number' then
 		if b then
 			return setmetatable({_x = a, _y = b, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
 		else
 			return setmetatable({_x = a, _y = a, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
 		end
-	elseif type(a) == 'number' then
+	elseif type(a) == 'table' then
 		if a.__type == vector2.__type then
 			return setmetatable({_x = a._x, _y = a._y, _angle = a._angle, _magnitude = a._magnitude, _sqr = a._sqr, __x = a.__x, __y = a.__y, __angle = a.__angle, __magnitude = a.__magnitude, __sqr = a.__sqr}, vector2)
 		else
