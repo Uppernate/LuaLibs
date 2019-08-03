@@ -1,5 +1,5 @@
 local chronos = require'chronos'
-local vector2 = require'./Vector.lua'
+local vector2 = require'./VectorArray.lua'
 
 function measure(name, f)
 	local total = 0
