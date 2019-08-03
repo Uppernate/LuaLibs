@@ -16,42 +16,20 @@ local format = string.format
 -- Constructor
 
 function vector2.new(a, b)
-	local i = {
-		_x = 0,
-		_y = 0,
-		_angle = 0,
-		_magnitude = 0,
-		_sqr = 0,
-		__x = true,
-		__y = true,
-		__angle = false,
-		__magnitude = false,
-		__sqr = false
-	}
-	setmetatable(i, vector2)
-	local t = type(a)
-	if a and t == 'number' and b then
-		i.x = a
-		i.y = b
-	elseif a and t == 'number' then
-		i.x = a 
-		i.y = a 
-	elseif t == 'table' and a.__type and a.__type == vector2.__type then
-		i._x = a._x
-		i._y = a._y
-		i._angle = a._angle
-		i._magnitude = a._magnitude
-		i._sqr = a._sqr
-		i.__x = a.__x
-		i.__y = a.__y
-		i.__angle = a.__angle
-		i.__magnitude = a.__magnitude
-		i.__sqr = a.__sqr
-	elseif t == 'table' then
-		i.x = a.x or a[1] or 0
-		i.y = a.y or a[2] or 0
+	if type(a) == 'table' then
+		if b then
+			return setmetatable({_x = a, _y = b, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
+		else
+			return setmetatable({_x = a, _y = a, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
+		end
+	elseif type(a) == 'number' then
+		if a.__type == vector2.__type then
+			return setmetatable({_x = a._x, _y = a._y, _angle = a._angle, _magnitude = a._magnitude, _sqr = a._sqr, __x = a.__x, __y = a.__y, __angle = a.__angle, __magnitude = a.__magnitude, __sqr = a.__sqr}, vector2)
+		else
+			return setmetatable({_x = a.x or a[1] or 0, _y = a.y or a[2] or 0, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
+		end
 	end
-	return i
+	error(string.format('vector2 constructor given incompatible parameters: %s and %s', a, b))
 end
 
 vector2.__call = vector2.new
