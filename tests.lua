@@ -171,8 +171,8 @@ function empty()
 end
 
 measure('nothing, just a loop', empty)
-measure('vector2.new(), no params', newlocal)
-measure('vector2.new(), no params, local var', new)
+measure('vector2.new(), no params', new)
+measure('vector2.new(), no params, local var', newlocal)
 measure('vector2(), no parameters', noParams)
 measure('vector2(), number parameters', numParams)
 measure('vector2(), named table parameter', namedParam)
