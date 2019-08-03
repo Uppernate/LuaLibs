@@ -13,7 +13,7 @@ end
 function new()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2.new()
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -23,7 +23,7 @@ function newlocal()
 	local var
 	local v = vector2
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = v.new()
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -32,7 +32,7 @@ end
 function noParams()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2()
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -41,7 +41,7 @@ end
 function numParams()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2(0, 0)
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -51,7 +51,7 @@ function namedParam()
 	local var
 	local v = {x = 0, y = 0}
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2(v)
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -61,7 +61,7 @@ function arrayParam()
 	local var
 	local v = {0, 0}
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2(v)
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -71,7 +71,7 @@ function vectorParam()
 	local var
 	local v = vector2(0, 0)
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2(v)
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -81,7 +81,7 @@ function vectorCall()
 	local var
 	local v = vector2(0, 0)
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = v()
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -91,7 +91,7 @@ function getNoGen()
 	local var
 	local v = vector2(0, 0)
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = v.x
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -102,7 +102,7 @@ function getGenX()
 	local v = vector2(1, 1)
 	local a, m = v.angle, v.magnitude
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		v.__x = false
 		var = v.x
 	end
@@ -114,7 +114,7 @@ function getGenY()
 	local v = vector2(1, 1)
 	local a, m = v.angle, v.magnitude
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		v.__y = false
 		var = v.y
 	end
@@ -125,7 +125,7 @@ function getGenAngle()
 	local var
 	local v = vector2(1, 1)
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		v.__angle = false
 		var = v.angle
 	end
@@ -136,7 +136,7 @@ function getGenMagnitude()
 	local var
 	local v = vector2(1, 1)
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		v.__magnitude = false
 		var = v.magnitude
 	end
@@ -146,7 +146,7 @@ end
 function justATable()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = {x = 0, y = 0}
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -155,7 +155,7 @@ end
 function vectorWithTable()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		var = vector2{x = 1, y = 1}
 	end
 	return (chronos.nanotime() - t) * 1000
@@ -164,7 +164,7 @@ end
 function empty()
 	local var
 	local t = chronos.nanotime()
-	for i = 1, 1000000 do
+	for i = 1, 10000000 do
 		
 	end
 	return (chronos.nanotime() - t) * 1000
