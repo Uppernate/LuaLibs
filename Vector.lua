@@ -28,8 +28,9 @@ function vector2.new(a, b)
 		else
 			return setmetatable({_x = a.x or a[1] or 0, _y = a.y or a[2] or 0, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
 		end
+	else
+		return setmetatable({_x = 0, _y = 0, _angle = 0, _magnitude = 0, _sqr = 0, __x = true, __y = true, __angle = false, __magnitude = false, __sqr = false}, vector2)
 	end
-	error(string.format('vector2 constructor given incompatible parameters: %s and %s', a, b))
 end
 
 vector2.__call = vector2.new
