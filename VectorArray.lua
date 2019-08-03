@@ -123,7 +123,7 @@ function vector2.__setters:x(value)
 	if not self[7] then vector2.__getters.y(self) end
 	self[8] = false
 	self[9] = false
-	self[9]Sqr = false
+	self[10] = false
 	return self[1]
 end
 
@@ -133,7 +133,7 @@ function vector2.__setters:y(value)
 	if not self[6] then vector2.__getters.x(self) end
 	self[8] = false
 	self[9] = false
-	self[9]Sqr = false
+	self[10] = false
 	return self[2]
 end
 
